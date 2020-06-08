@@ -1,45 +1,53 @@
 //获取类型
-export function getType(param) {
+export const getType = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1)
 }
 
 //是否为null
-export function isNull(param) {
+export const isNull = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'Null'
 }
 
 //是否undefined
-export function isUndefined(param) {
+export const isUndefined = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'Undefined'
 }
 
 //是否数组
-export function isArray(param) {
+export const isArray = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'Array'
 }
 
 //是否对象
-export function isObj(param) {
+export const isObj = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'Object'
 }
 
 //是否函数
-export function isFunction(param) {
+export const isFunction = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'Function'
 }
 
 //是否字符串
-export function isString(param) {
+export const isString = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'String'
 }
 
 //是否数字
-export function isNumber(param) {
+export const isNumber = (param) => {
 	return Object.prototype.toString.call(param).slice(8, -1) === 'Number'
 }
 
+//是否bool
+export const isBoolean = (param) => {
+	return Object.prototype.toString.call(param).slice(8, -1) === 'Boolean'
+}
+
 //是否为空
-export function empty(param) {
+export const empty = (param) => {
+	if (isBoolean(param)){
+		return param
+	}
 	if (isNull(param)){
 		return true
 	}
@@ -55,5 +63,38 @@ export function empty(param) {
 		}
 	}
 	return false
-
 }
+
+//范围随机数
+export const rand = (min,max) => {
+	if (arguments.length === 2) {
+		return Math.floor(min + Math.random() * ((max + 1) - min))
+	} else {
+		return null;
+	}
+}
+
+//数组中是否包含
+export const inArray = (param,array) => {
+	return array.indexOf(param) != -1 ? true : false;
+}
+
+//删除数组中某个元素
+export const removeArrayElement = (ele,arr) => {
+	let index = arr.indexOf(ele);
+	if (index > -1) {
+		arr.splice(index, 1);
+	}
+	return arr;
+}
+
+//数组最大值
+export const arrayMax =(arr) => {
+	return Math.max(...arr); //可用Math.max.apply(null.arr)
+}
+
+//数组最小值
+export const arrayMin = (arr) => {
+	return Math.min(...arr);
+}
+
