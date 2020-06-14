@@ -65,6 +65,16 @@ export const empty = (param) => {
 	return false
 }
 
+//判断邮箱
+export const isEmail = (param) =>{
+	return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(param)
+}
+
+//判断手机号码
+export const isMobile = (param) => {
+	return /^1[0-9]{10}$/.test(param)
+}
+
 //范围随机数
 export const rand = (min,max) => {
 	if (arguments.length === 2) {
@@ -97,4 +107,24 @@ export const arrayMax =(arr) => {
 export const arrayMin = (arr) => {
 	return Math.min(...arr);
 }
+
+//去除空格 type；1。所有空格 2.前后空格 3.前空格 4.后空格
+export const trim = (str, type = 1) => {
+	type = type || 1
+	switch (type) {
+		case 1:
+			return str.replace(/\s+/g, "");
+		case 2:
+			return str.replace(/(^\s*)|(\s*$)/g, "");
+		case 3:
+			return str.replace(/(^\s*)/g, "");
+		case 4:
+			return str.replace(/(\s*$)/g, "");
+		default:
+			return str;
+	}
+}
+
+
+
 
