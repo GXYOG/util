@@ -125,6 +125,20 @@ export const trim = (str, type = 1) => {
 	}
 }
 
+//大小写字母根据字母表顺序排序
+export const letterToNumber = (param) => {
+	let regX = /^[A-Z]+$/; //判断大小写
+	let regN = /^[a-z]+$/;
+	let res = 0
+	if(regX.test(param)){
+		res = param.charCodeAt() - 64
+	}else if(regN.test(param)){
+		res = param.charCodeAt() - 96
+	}else{
+		res = param;
+	}
+	return res;
+}
 
 
 
